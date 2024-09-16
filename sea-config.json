@@ -1,0 +1,4 @@
+{
+    "main": "./dist/wbat.iife.js",
+    "output": "./bin/wbat.blob"
+}
