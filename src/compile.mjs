@@ -32,8 +32,4 @@ else {
 
 
 //node sea還不能打包*.mjs檔, 故需要先用rollup編譯成js
-//node --experimental-modules toolg/gDistRollup.mjs
-//node --experimental-modules toolg/assignNodePks.mjs
-//node --experimental-sea-config sea-config.json
-//node -e "require('fs').copyFileSync(process.execPath, 'wbat.exe')"
-//npx postject wbat.exe NODE_SEA_BLOB wbat.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
+//因流程較為繁瑣, 須使用script.txt內指令進行編譯

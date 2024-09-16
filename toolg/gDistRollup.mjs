@@ -11,6 +11,7 @@ rollupFiles({
     fdTar,
     nameDistType: 'kebabCase',
     format: 'iife', //針對compile.mjs編譯出直接執行程序
+    bSourcemap: false,
     globals: {
         'path': 'path',
         'fs': 'fs',

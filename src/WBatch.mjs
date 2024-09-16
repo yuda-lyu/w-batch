@@ -1,3 +1,4 @@
+import cp from 'child_process'
 import path from 'path'
 import fs from 'fs'
 import JSON5 from 'json5'
@@ -73,6 +74,7 @@ async function WBatch(inp) {
             return Promise.reject('input is not a string for path of json file or not an array for settings')
         }
 
+        //msg
         let msg = []
         try {
 
@@ -104,14 +106,10 @@ async function WBatch(inp) {
                     return
                 }
 
-                //r
-                let r = ''
-
                 //prog
                 let prog = get(v, 'prog', '')
                 if (!isestr(prog)) {
-                    r = 'error: invalid prog'
-                    msg.push(r)
+                    msg.push('invalid prog')
                     return
                 }
 
@@ -121,18 +119,44 @@ async function WBatch(inp) {
                     args = [args]
                 }
 
-                //execScript
+                //wait
+                let wait = get(v, 'wait', true)
+                if (!isbol(wait)) {
+                    wait = true
+                }
+
+                //wait
                 // console.log('prog', prog)
                 // console.log('args', args)
-                await execScript(prog, args)
-                    .then((res) => {
-                        // console.log('res', res)
-                        msg.push(res)
+                // console.log('wait', wait)
+                if (wait) {
+                    // console.log('call execScript')
+                    await execScript(prog, args)
+                        .then((res) => {
+                            // console.log('res', res)
+                            msg.push(res)
+                        })
+                        .catch((err) => {
+                            // console.log('err', err)
+                            msg.push(err)
+                        })
+                }
+                else {
+                    // console.log('call spawn')
+                    let ls = cp.spawn(prog, args)
+                    ls.stdout.on('data', (data) => {
+                        // console.log(`stdout: ${data}`)
+                        msg.push(`stdout: ${data}`)
                     })
-                    .catch((err) => {
-                        // console.log('err', err)
-                        msg.push(err)
+                    ls.stderr.on('data', (data) => {
+                        // console.log(`stderr: ${data}`)
+                        msg.push(`stderr: ${data}`)
                     })
+                    ls.on('close', (code) => {
+                        // console.log(`child process exited with code ${code}`)
+                        msg.push(`close: code[${code}]`)
+                    })
+                }
 
             })
 

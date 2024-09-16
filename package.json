@@ -1,6 +1,6 @@
 {
   "name": "w-batch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/w-batch.umd.js",
   "dependencies": {
     "json5": "^2.2.3",
