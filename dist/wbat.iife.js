@@ -1,5 +1,5 @@
 /*!
- * compile v1.0.1
+ * compile v1.0.2
  * (c) 2018-2021 yuda-lyu(semisphere)
  * Released under the MIT License.
  */

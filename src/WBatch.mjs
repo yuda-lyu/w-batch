@@ -56,7 +56,24 @@ async function readSetting(fpSetting) {
  * @param {Array|String} inp 輸入設定陣列或設定檔名稱字串
  * @returns {Promise} 回傳Promise，revolve回傳成功訊息，reject回傳錯誤訊息
  * @example
-
+ *
+ * let inp = [
+ *   {
+ *     "settings":{
+ *       "logFd":"./testLog",
+ *       "logWhenSuccess":true,
+ *       "logWhenError":true,
+ *     },
+ *   },
+ *   {
+ *     "prog":"node",
+ *     "args":"-v",
+ *     "wait":true,
+ *   },
+ * ]
+ * let msg = await WBatch(inp)
+ * console.log('msg', msg)
+ *
  */
 async function WBatch(inp) {
 

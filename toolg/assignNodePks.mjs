@@ -1,5 +1,4 @@
 import fs from 'fs'
-import _ from 'lodash-es'
 
 //因rollup轉譯出iife檔須由外部環境提供path,fs,child_process, 此時預設node執行環境下沒法提供, 得通過require取得, 故直接修改轉譯後程式碼
 
@@ -20,7 +19,7 @@ if (true) {
             break
         }
     }
-    console.log('ts', ts)
+    // console.log('ts', ts)
 }
 let ti = ts
 let to = ts
