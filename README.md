@@ -13,8 +13,6 @@ To view documentation or get support, visit [docs](https://yuda-lyu.github.io/w-
 
 ## Installation
 ### Using npm(ES6 module):
-> **Note:** `w-batch` is mainly dependent on `json5`.
-
 > **Note:** `w-batch` can be compiled into an executable file by using `sea`. 
 
 ```alias

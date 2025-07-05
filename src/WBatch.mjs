@@ -15,7 +15,7 @@ import now2strp from 'wsemi/src/now2strp.mjs'
 import strright from 'wsemi/src/strright.mjs'
 import o2j from 'wsemi/src/o2j.mjs'
 import fsCreateFolder from 'wsemi/src/fsCreateFolder.mjs'
-import execScript from 'wsemi/src/execScript.mjs'
+import execProcess from 'wsemi/src/execProcess.mjs'
 
 
 let logFd = '' //若由排程呼叫且不給logFd絕對路徑時, 預設是位於C:\Windows\system32
@@ -133,7 +133,7 @@ async function WBatch(inp) {
                 //args
                 let args = get(v, 'args', [])
                 if (isestr(args)) {
-                    args = [args]
+                    args = [args] //為單參數之指令字串時才能自動轉陣列, 若為多參數之指令字串得要切分成陣列
                 }
 
                 //wait
@@ -147,8 +147,8 @@ async function WBatch(inp) {
                 // console.log('args', args)
                 // console.log('wait', wait)
                 if (wait) {
-                    // console.log('call execScript')
-                    await execScript(prog, args)
+                    // console.log('call execProcess')
+                    await execProcess(prog, args)
                         .then((res) => {
                             // console.log('res', res)
                             msg.push(res)
@@ -160,7 +160,7 @@ async function WBatch(inp) {
                 }
                 else {
                     // console.log('call spawn')
-                    let ls = cp.spawn(prog, args)
+                    let ls = cp.spawn(prog, args, { encoding: 'utf8' })
                     ls.stdout.on('data', (data) => {
                         // console.log(`stdout: ${data}`)
                         msg.push(`stdout: ${data}`)
