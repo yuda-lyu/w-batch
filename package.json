@@ -1,11 +1,11 @@
 {
   "name": "w-batch",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "dist/w-batch.umd.js",
   "dependencies": {
     "json5": "^2.2.3",
     "lodash-es": "^4.17.21",
-    "wsemi": "^1.8.9"
+    "wsemi": "^1.8.22"
   },
   "devDependencies": {
     "w-package-tools": "^1.1.2"

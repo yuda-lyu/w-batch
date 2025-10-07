@@ -68,7 +68,6 @@ async function readSetting(fpSetting) {
  *   {
  *     "prog":"node",
  *     "args":"-v",
- *     "wait":true,
  *   },
  * ]
  * let msg = await WBatch(inp)
@@ -136,44 +135,16 @@ async function WBatch(inp) {
                     args = [args] //為單參數之指令字串時才能自動轉陣列, 若為多參數之指令字串得要切分成陣列
                 }
 
-                //wait
-                let wait = get(v, 'wait', true)
-                if (!isbol(wait)) {
-                    wait = true
-                }
-
-                //wait
-                // console.log('prog', prog)
-                // console.log('args', args)
-                // console.log('wait', wait)
-                if (wait) {
-                    // console.log('call execProcess')
-                    await execProcess(prog, args)
-                        .then((res) => {
-                            // console.log('res', res)
-                            msg.push(res)
-                        })
-                        .catch((err) => {
-                            // console.log('err', err)
-                            msg.push(err)
-                        })
-                }
-                else {
-                    // console.log('call spawn')
-                    let ls = cp.spawn(prog, args, { encoding: 'utf8' })
-                    ls.stdout.on('data', (data) => {
-                        // console.log(`stdout: ${data}`)
-                        msg.push(`stdout: ${data}`)
+                //execProcess
+                await execProcess(prog, args)
+                    .then((res) => {
+                        // console.log('res', res)
+                        msg.push(res)
                     })
-                    ls.stderr.on('data', (data) => {
-                        // console.log(`stderr: ${data}`)
-                        msg.push(`stderr: ${data}`)
+                    .catch((err) => {
+                        // console.log('err', err)
+                        msg.push(err.toString())
                     })
-                    ls.on('close', (code) => {
-                        // console.log(`child process exited with code ${code}`)
-                        msg.push(`close: code[${code}]`)
-                    })
-                }
 
             })
 

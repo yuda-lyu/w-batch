@@ -23,4 +23,3 @@ npm run deploy
 #npm test
 
 #npm publish
-
