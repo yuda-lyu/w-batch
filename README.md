@@ -12,6 +12,7 @@ A batch tool.
 To view documentation or get support, visit [docs](https://yuda-lyu.github.io/w-batch/WBatch.html).
 
 ## Installation
+
 ### Using npm(ES6 module):
 > **Note:** `w-batch` can be compiled into an executable file by using `sea`. 
 
