@@ -31,5 +31,5 @@ else {
 }
 
 
-//node sea還不能打包*.mjs檔, 故需要先用rollup編譯成js
+//node sea還不能打包*.mjs檔, 且只能嵌入單一standalone檔, 故須先用rollup編譯成js
 //因流程較為繁瑣, 須使用script.txt內指令進行編譯
