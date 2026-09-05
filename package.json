@@ -1,10 +1,10 @@
 {
   "name": "w-batch",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "main": "dist/w-batch.umd.js",
   "dependencies": {
     "json5": "^2.2.3",
-    "wsemi": "^1.8.84"
+    "wsemi": "^1.8.85"
   },
   "devDependencies": {
     "postject": "^1.0.0-alpha.6",
