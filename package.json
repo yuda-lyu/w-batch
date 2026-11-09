@@ -1,14 +1,14 @@
 {
   "name": "w-batch",
-  "version": "1.0.37",
+  "version": "1.0.38",
   "main": "dist/w-batch.umd.js",
   "dependencies": {
     "json5": "^2.2.3",
-    "wsemi": "^1.9.52"
+    "wsemi": "^1.9.54"
   },
   "devDependencies": {
     "postject": "^1.0.0-alpha.6",
-    "w-package-tools": "^1.1.23"
+    "w-package-tools": "^1.1.24"
   },
   "scripts": {
     "test": "mocha --parallel \"test/*.test.mjs\" --timeout 180000",
