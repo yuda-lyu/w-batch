@@ -23,7 +23,7 @@ describe('WBatch', function() {
         cp.spawnSync('./bin/wbat.exe', ['./bin/setting.json'], { encoding: 'utf8' })
         // console.log('r', r)
 
-        let vfps = w.fsTreeFolder('./testLog')
+        let vfps = w.fsTreeFolder('./testLog', { levelLimit: 1 })
         // console.log('vfps', vfps)
 
         let vfp = _.last(vfps)

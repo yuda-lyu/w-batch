@@ -6,7 +6,7 @@ import w from 'wsemi'
 let r = cp.spawnSync('./bin/wbat.exe', ['./bin/setting.json'], { encoding: 'utf8' })
 console.log('r', r)
 
-let vfps = w.fsTreeFolder('./testLog')
+let vfps = w.fsTreeFolder('./testLog', { levelLimit: 1 }) //log檔皆直接位於logFd下, 只列第1層
 console.log('vfps', vfps)
 
 let vfp = _.last(vfps)
